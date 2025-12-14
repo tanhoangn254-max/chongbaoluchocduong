@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Thông tin - Phòng, chống tội phạm trong trường học</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Quan trọng cho mobile -->
   <style>
     body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; color: #333; }
-    header { background-color: #c0392b; color: white; padding: 20px; text-align: center; }
-    header h1 { margin: 0; font-size: 24px; }
-    header p { margin-top: 8px; font-size: 14px; }
-
+    header { background-color: #c0392b; color: white; padding: 30px; text-align: center; }
+    header h1 { margin: 0; font-size: 32px; }
+    header p { margin-top: 10px; font-size: 18px; }
     .nav {
       background-color: #c62828;
-      padding: 10px;
+      padding: 12px;
       display: flex;
-      justify-content: center; /* căn giữa menu */
+      justify-content: center;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-    .nav-links {
+    .nav-links{
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -28,69 +26,62 @@
     .nav a {
       color: #fff; margin: 0 15px; text-decoration: none;
       font-weight: bold; transition: color 0.3s ease;
-      font-size: 14px;
     }
+
     .nav a:hover { color: #ff5252; }
 
     .user-logo {
-      width: 30px; height: 30px; border-radius: 50%;
+      width: 35px; height: 35px; border-radius: 50%;
       background: #ff5252; color: #fff; text-align: center;
-      line-height: 30px; font-size: 16px; font-weight: bold;
+      line-height: 35px; font-size: 18px; font-weight: bold;
       cursor: pointer; transition: transform 0.3s ease, background-color 0.3s ease;
       position: absolute; right: 20px; /* logo nằm bên phải */
     }
-    .user-logo:hover { background-color: #c62828; transform: scale(1.1); }
-
-    .logo-menu {
-      display: none; position: absolute; top: 45px; right: 10px;
-      background: #fff; border: 1px solid #ccc; border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2); min-width: 140px; z-index: 1000;
     }
-    .logo-menu a { display: block; padding: 8px; text-decoration: none; color: #333; font-size: 14px; }
+    .user-logo:hover { background-color: #c62828; transform: scale(1.1); }
+    .logo-menu {
+      display: none; position: absolute; top: 55px; right: 20px;
+      background: #fff; border: 1px solid #ccc; border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2); min-width: 160px; z-index: 1000;
+    }
+    .logo-menu a {
+      display: block; padding: 10px; text-decoration: none;
+      color: #333; font-size: 14px;
+    }
     .logo-menu a:hover { background: #fbe9e7; color: #c62828; }
-
-    .content { max-width: 960px; margin: 20px auto; padding: 0 15px; }
-    h2 { color: #c0392b; margin-top: 20px; font-size: 20px; }
-    p, ul { font-size: 16px; line-height: 1.6; }
+    .content { max-width: 960px; margin: 40px auto; padding: 0 20px; }
+    h2 { color: #c0392b; margin-top: 40px; transition: color 0.3s ease; }
+    h2:hover { color: #e74c3c; }
+    p, ul { font-size: 18px; line-height: 1.6; }
     ul { padding-left: 20px; }
-
-    img, video {
+    img {
       transition: transform 0.3s ease;
-      width: 100%; height: auto;
+      width: 100%; max-width: 915px; height: auto;
       border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      margin-top: 15px;
+      margin-top: 20px;
     }
     img:hover { transform: scale(1.02); }
-
     button {
-      background-color: #c0392b; color: white; padding: 10px 16px;
+      background-color: #c0392b; color: white; padding: 10px 20px;
       border: none; border-radius: 5px; cursor: pointer;
-      margin-top: 15px; font-size: 14px; width: 100%;
+      margin-top: 20px; font-size: 16px;
     }
     button:hover { background-color: #e74c3c; }
-
-    footer { background-color: #c0392b; color: white; text-align: center; padding: 15px; margin-top: 40px; font-size: 12px; }
-
-    table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
-    th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+    footer { background-color: #c0392b; color: white; text-align: center; padding: 20px; margin-top: 60px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 18px; }
+    th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
     th { background-color: #c0392b; color: white; }
     tr:nth-child(even) { background-color: #fdf2f2; }
-
     .cta-button {
-      display: inline-block; margin-top: 15px; background-color: #c0392b;
-      color: white; padding: 10px 20px; border-radius: 6px;
-      font-size: 14px; text-decoration: none; font-weight: bold;
+      display: inline-block; margin-top: 20px; background-color: #c0392b;
+      color: white; padding: 12px 24px; border-radius: 6px;
+      font-size: 16px; text-decoration: none; font-weight: bold;
       transition: background-color 0.3s ease;
     }
     .cta-button:hover { background-color: #e74c3c; }
-
-    /* Responsive cho màn hình nhỏ */
-    @media (max-width: 600px) {
-      header h1 { font-size: 20px; }
-      header p { font-size: 12px; }
-      h2 { font-size: 18px; }
-      p, ul { font-size: 14px; }
-      .nav a { font-size: 13px; margin: 3px 0; }
+    video {
+      display: block; margin: 20px auto; border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -100,8 +91,6 @@
     <h1>Chuyên đề giáo dục</h1>
     <p><strong>Phòng, chống tội phạm trộm cắp và cố ý gây thương tích trong các cơ sở giáo dục</strong></p>
   </header>
-
-  <!-- Menu -->
   <div class="nav">
     <div class="nav-links">
       <a href="index.html">Trang Chủ</a>
@@ -114,18 +103,78 @@
     <div class="logo-menu" id="logoMenu">
       <a href="#" id="profile">👤 Xem thông tin</a>
       <a href="#" onclick="logout()">🚪 Đăng xuất</a>
-    </div>
   </div>
+</div>
+
 
   <div class="content">
-    <!-- Nội dung giữ nguyên như bạn đã viết -->
-    <!-- ... -->
-  </div>
+    <h2>🏛️ Cơ quan ban hành</h2>
+    <video width="900" controls>
+      <source src="video/bl.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
+    <p>
+      - Ủy ban nhân dân phường Mỹ Phong (Công văn số 1198/UBND-VHXH, ngày 24/9/2025)<br>
+      - Sở Giáo dục và Đào tạo tỉnh Đồng Tháp (Công văn số 718/SGDĐT-VP, ngày 17/9/2025)
+    </p>
 
-  <footer>
-    &copy; 2025 Trường Tân Mỹ Chánh. Chung tay vì học đường an toàn.
-  </footer>
+    <h2>🎯 Mục tiêu chuyên đề</h2>
+    <img src="img/anh2.jpg" alt="Mục tiêu chuyên đề">
+    <p>
+      <strong>Tăng cường tuyên truyền, phòng ngừa và đấu tranh</strong> với các hành vi trộm cắp, cố ý gây thương tích trong trường học;<br>
+      Đảm bảo <strong>môi trường giáo dục an toàn, lành mạnh và thân thiện</strong> cho học sinh, giáo viên và cán bộ nhà trường.
+    </p>
 
+    <h2>📌 Nội dung triển khai</h2>
+    <img src="img/anh3.jpg" alt="Nội dung triển khai">
+
+    <h2>📌 Biện Pháp</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>🔢 STT</th>
+          <th>Biện pháp</th>
+          <th>Mục tiêu & hành động cụ thể</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1️⃣</td><td><strong>Lồng ghép giáo dục pháp luật</strong></td><td>Tổ chức sinh hoạt chuyên đề, sân khấu hóa, thảo luận nhóm để học sinh hiểu rõ hậu quả của hành vi vi phạm.</td></tr>
+        <tr><td>2️⃣</td><td><strong>Truyền thông cảnh báo đa kênh</strong></td><td>Đăng infographic, video cảnh báo trên website, Zalo, Facebook để nâng cao nhận thức toàn trường.</td></tr>
+        <tr><td>3️⃣</td><td><strong>Theo dõi học sinh có dấu hiệu vi phạm</strong></td><td>Lập danh sách học sinh cần quan tâm, phân công giáo viên hỗ trợ, tư vấn và định hướng hành vi.</td></tr>
+        <tr><td>4️⃣</td><td><strong>Ký cam kết toàn trường</strong></td><td>Học sinh, giáo viên, cán bộ cùng cam kết không vi phạm pháp luật và tố giác hành vi sai trái.</td></tr>
+        <tr><td>5️⃣</td><td><strong>Phối hợp chặt chẽ với phụ huynh</strong></td><td>Giáo viên chủ nhiệm trao đổi thường xuyên với phụ huynh, đặc biệt với học sinh cá biệt để cùng giáo dục và hỗ trợ.</td></tr>
+      </tbody>
+    </table>
+
+    <button onclick="window.location.href='gopy.html'">Gửi góp ý ngay</button>
+    <h2>🎞Hình ảnh minh họa</h2>
+    <img src="img/bp1.jpg" alt="Phối hợp ba bên">
+    <img src="img/bp2.jpg" alt="Phối hợp ba bên">
+    <img src="img/bp3.jpg" alt="Phối hợp ba bên">
+    <img src="img/bp4.jpg" alt="Phối hợp ba bên">
+    <img src="img/bp5.jpg" alt="Phối hợp ba bên">
+    <h2>🎬 Video tuyên truyền chuyên đề</h2>
+    <video width="900" controls>
+      <source src="video/baoluchocduong.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
+
+    <h2>🤝 Phối hợp ba bên</h2>
+    <img src="img/anh4.jpg" alt="Phối hợp ba bên">
+    <p>
+      Thực hiện mô hình phối hợp chặt chẽ giữa <strong>Nhà trường - Gia đình - Địa phương</strong> nhằm phát hiện sớm, ngăn chặn kịp thời các hành vi vi phạm,<br>
+      đồng thời <strong>giáo dục học sinh nâng cao ý thức pháp luật và trách nhiệm công dân</strong>.
+    </p>
+
+    <h2>🗣️ Thông điệp chuyên đề</h2>
+    <img src="img/anh5.jpg" alt="Thông điệp chuyên đề">
+    <p>
+    <h2>🔗 Thông tin liên quan</h2>
+    <p>
+      - “Theo báo Tuổi Trẻ, nguồn tin tại đây cho biết”<br>
+      <a href="https://tuoitre.vn/dung-phuong-phap-bao-dung-de-dap-tat-bao-luc-hoc-duong-20251209152700466.htm" target="_blank">Xem bài viết trên báo Tuổi Trẻ</a>
+    </p>
+      <strong>“Trường học là nơi an toàn 
   <script>
     // Kiểm tra đăng nhập
     window.onload = function() {
@@ -152,6 +201,5 @@
       window.location.href = "login.html";
     }
   </script>
-
 </body>
-</html>
+</html>  
