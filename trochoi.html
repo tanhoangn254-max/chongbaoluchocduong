@@ -3,60 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <title>Trò chơi - Nói không với bạo lực học đường</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; color: #333; }
     header { background-color: #c0392b; color: white; text-align: center; padding: 30px 20px; }
     header h1 { color: white !important; }
+
     .nav {
       background-color: #c62828;
       padding: 12px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center; /* căn giữa menu */
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
     .nav a {
       color: #fff;
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s ease;
     }
     .nav a:hover { color: #ff5252; }
+
     .user-logo {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background: #ff5252;
-      color: #fff;
-      text-align: center;
-      line-height: 35px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      position: relative;
+      width: 35px; height: 35px; border-radius: 50%;
+      background: #ff5252; color: #fff; text-align: center;
+      line-height: 35px; font-size: 18px; font-weight: bold;
+      cursor: pointer; transition: transform 0.3s ease, background-color 0.3s ease;
+      position: absolute; right: 20px; /* logo nằm bên phải */
     }
+    .user-logo:hover { background-color: #c62828; transform: scale(1.1); }
+
     .logo-menu {
-      display: none;
-      position: absolute;
-      top: 55px;
-      right: 20px;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      min-width: 160px;
-      z-index: 1000;
+      display: none; position: absolute; top: 55px; right: 20px;
+      background: #fff; border: 1px solid #ccc; border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2); min-width: 160px; z-index: 1000;
+      text-align: center;
     }
-    .logo-menu a {
-      display: block;
-      padding: 10px;
-      text-decoration: none;
-      color: #333;
-      font-size: 14px;
-    }
+    .logo-menu a { display: block; padding: 10px; text-decoration: none; color: #333; font-size: 14px; }
     .logo-menu a:hover { background: #fbe9e7; color: #c62828; }
+
     .container {
       background-color: #fff;
       margin: 40px auto;
@@ -98,7 +92,7 @@
 
   <!-- Menu -->
   <div class="nav">
-    <div>
+    <div class="nav-links">
       <a href="index.html">Trang Chủ</a>
       <a href="news.html">Tin tức</a>
       <a href="gt.html">Thông tin</a>
@@ -168,7 +162,7 @@
       if (current < questions.length) {
         loadQuestion();
       } else {
-        document.querySelector(".question").innerText = `🎯 Bạn đã hoàn thành tất cả câu hỏi!`;
+        document.querySelector(".question").innerText = `🎯 Bạn đã hoàn thành tất cả câu`;
         document.getElementById("answers").innerHTML = "";
         document.getElementById("result").innerText = `🎓 Tổng điểm của bạn: ${score}/${questions.length}`;
         document.querySelector(".next-btn").style.display = "none";
