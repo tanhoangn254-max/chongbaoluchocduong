@@ -15,10 +15,7 @@
       align-items: center;
     }
     .nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
+      color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold;
     }
     .nav a:hover { color: #ff5252; }
     .user-logo {
@@ -34,10 +31,7 @@
       background: #fff; border: 1px solid #ccc; border-radius: 6px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2); min-width: 160px; z-index: 1000;
     }
-    .logo-menu a {
-      display: block; padding: 10px; text-decoration: none;
-      color: #333; font-size: 14px;
-    }
+    .logo-menu a { display: block; padding: 10px; text-decoration: none; color: #333; font-size: 14px; }
     .logo-menu a:hover { background: #fbe9e7; color: #c62828; }
     .contact-box {
       background-color: #fff; margin: 40px auto; padding: 30px;
@@ -106,7 +100,7 @@
           alert("👤 Người dùng: " + currentUser.username);
         };
       } else {
-        window.location.href = "login.html";
+        window.location.href = "auth.html";
       }
     };
 
@@ -119,35 +113,34 @@
     // Đăng xuất
     function logout() {
       localStorage.removeItem("currentUser");
-      window.location.href = "login.html";
+      window.location.href = "auth.html";
     }
 
-    // Xử lý form góp ý
+    // Xử lý form góp ý gửi qua Formspree
     const form = document.getElementById('contactForm');
     const responseDiv = document.getElementById('response');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message')
-      };
 
       try {
         const res = await fetch('https://formspree.io/f/xanapvpp', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          body: formData, // gửi trực tiếp FormData
+          headers: { 'Accept': 'application/json' }
         });
 
-        const result = await res.text();
-        responseDiv.innerText = result;
-        responseDiv.style.color = '#27ae60';
-        form.reset();
+        if (res.ok) {
+          responseDiv.innerText = '✅ Gửi thành công! Nhà trường sẽ phản hồi qua email.';
+          responseDiv.style.color = '#27ae60';
+          form.reset();
+        } else {
+          responseDiv.innerText = '❌ Gửi thất bại. Vui lòng thử lại.';
+          responseDiv.style.color = '#c0392b';
+        }
       } catch (error) {
-        responseDiv.innerText = '❌ Gửi thất bại. Vui lòng thử lại.';
+        responseDiv.innerText = '❌ Lỗi kết nối. Vui lòng thử lại.';
         responseDiv.style.color = '#c0392b';
       }
     });
@@ -155,4 +148,3 @@
 
 </body>
 </html>
-
