@@ -4,92 +4,61 @@
   <meta charset="UTF-8">
   <title>Trang chủ - Nói không với bạo lực học đường</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; color: #333; }
     header {
       background: linear-gradient(to right, #c0392b, #e74c3c);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
+      color: white; padding: 40px 20px; text-align: center;
     }
-    nav {
-      background-color: #fff;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    .nav {
+      background-color: #c62828;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-    nav a {
-      margin: 0 20px;
-      text-decoration: none;
-      color: #c0392b;
-      font-weight: bold;
-      font-size: 16px;
-      transition: color 0.3s ease;
+    .nav a {
+      color: #fff; margin: 0 15px; text-decoration: none;
+      font-weight: bold; font-size: 16px; transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: #e74c3c;
+    .nav a:hover { color: #ff5252; }
+    .user-logo {
+      width: 35px; height: 35px; border-radius: 50%;
+      background: #ff5252; color: #fff; text-align: center;
+      line-height: 35px; font-size: 18px; font-weight: bold;
+      cursor: pointer; transition: transform 0.3s ease, background-color 0.3s ease;
+      position: relative;
     }
-    .main {
-      padding: 50px 20px;
-      text-align: center;
+    .user-logo:hover { background-color: #c62828; transform: scale(1.1); }
+    .logo-menu {
+      display: none; position: absolute; top: 55px; right: 20px;
+      background: #fff; border: 1px solid #ccc; border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2); min-width: 160px; z-index: 1000;
     }
-    .main h2 {
-      color: #c0392b;
-      font-size: 28px;
-      margin-bottom: 20px;
+    .logo-menu a {
+      display: block; padding: 10px; text-decoration: none;
+      color: #333; font-size: 14px;
     }
-    .main p {
-      font-size: 18px;
-      color: #555;
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.6;
-    }
+    .logo-menu a:hover { background: #fbe9e7; color: #c62828; }
+    .main { padding: 50px 20px; text-align: center; }
+    .main h2 { color: #c0392b; font-size: 28px; margin-bottom: 20px; }
+    .main p { font-size: 18px; color: #555; max-width: 800px; margin: auto; line-height: 1.6; }
     .main img {
-      margin-top: 30px;
-      max-width: 90%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      margin-top: 30px; max-width: 90%; height: auto;
+      border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
     }
-    .main img:hover {
-      transform: scale(1.03);
-    }
+    .main img:hover { transform: scale(1.03); }
     .cta-button {
-      display: inline-block;
-      margin-top: 30px;
-      background-color: #c0392b;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
+      display: inline-block; margin-top: 30px; background-color: #c0392b;
+      color: white; padding: 12px 24px; border-radius: 6px;
+      font-size: 16px; text-decoration: none; transition: background-color 0.3s ease;
     }
-    .cta-button:hover {
-      background-color: #e74c3c;
-    }
-    footer {
-      background-color: #c0392b;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 60px;
-      font-size: 16px;
-    }
+    .cta-button:hover { background-color: #e74c3c; }
+    footer { background-color: #c0392b; color: white; text-align: center; padding: 20px; margin-top: 60px; font-size: 16px; }
   </style>
 </head>
 <body>
@@ -99,13 +68,21 @@
     <p><strong>Trang chủ tuyên truyền giáo dục học đường an toàn, thân thiện và đầy yêu thương</strong></p>
   </header>
 
-  <nav>
-    <a href="index.html">Trang chủ</a>
-    <a href="news.html">Tin tức</a>
-    <a href="gt.html">Thông tin</a>
-    <a href="trochoi.html">Trò chơi</a>
-    <a href="gopy.html">Góp ý</a>
-  </nav>
+  <!-- Menu -->
+  <div class="nav">
+    <div>
+      <a href="index.html">Trang Chủ</a>
+      <a href="news.html">Tin tức</a>
+      <a href="gt.html">Thông tin</a>
+      <a href="trochoi.html">Trò chơi</a>
+      <a href="gopy.html">Góp ý</a>
+    </div>
+    <div class="user-logo" id="userLogo"></div>
+    <div class="logo-menu" id="logoMenu">
+      <a href="#" id="profile">👤 Xem thông tin</a>
+      <a href="#" onclick="logout()">🚪 Đăng xuất</a>
+    </div>
+  </div>
 
   <div class="main">
     <h2>📢 Hành động vì môi trường học đường không bạo lực</h2>
@@ -122,8 +99,32 @@
     &copy; 2025 Trường Tân Mỹ Chánh. Chung tay vì học đường an toàn.
   </footer>
 
+  <script>
+    // Kiểm tra đăng nhập
+    window.onload = function() {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if(currentUser) {
+        document.getElementById("userLogo").textContent = currentUser.avatar;
+        document.getElementById("profile").onclick = function() {
+          alert("👤 Người dùng: " + currentUser.username);
+        };
+      } else {
+        window.location.href = "login.html";
+      }
+    };
+
+    // Toggle menu khi click logo
+    document.getElementById("userLogo").addEventListener("click", function() {
+      const menu = document.getElementById("logoMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    });
+
+    // Đăng xuất
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
+    }
+  </script>
+
 </body>
 </html>
-
-
-
